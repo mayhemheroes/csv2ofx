@@ -51,7 +51,7 @@ def TestOneInput(data):
             return -1
         raise
     except KeyError:
-        if random.random() > 0.9:
+        if random.random() > 0.99:
             raise
         return -1
 
