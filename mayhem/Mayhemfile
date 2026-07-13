@@ -1,0 +1,13 @@
+# Mayhem target: csv2ofx CSV -> OFX/QIF converter (Atheris/libFuzzer harness).
+# The cmd binary is the compiled ELF launcher that drives mayhem/fuzz_csv.py; Atheris instruments
+# the csv2ofx package (and meza.io) so the run records coverage (edges).
+# Target name `fuzz-csv` is the ORIGINAL integration's target — kept so run history isn't orphaned.
+project: csv2ofx
+target: fuzz-csv
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz-csv/testsuite
+
+cmds:
+  - cmd: /mayhem/fuzz-csv
+    libfuzzer: true
